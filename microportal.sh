@@ -15,7 +15,7 @@ case "$1" in
         ;;
     clean)
         echo "Cleaning ${STACK_NAME} stack"
-        docker-compose -p ${STACK_NAME} down -v
+        docker-compose -p ${STACK_NAME} down
         ;;
     *)
         echo "Accepted commands: start, stop, restart or clean"
