@@ -5,6 +5,10 @@ case "$1" in
         echo "Starting ${STACK_NAME} stack"
         docker-compose -p ${STACK_NAME} up -d --remove-orphans
         ;;
+    start-base)
+        echo "Starting base services for ${STACK_NAME} stack"
+        docker-compose -p ${STACK_NAME} up -d mongo postgres keycloak
+        ;;
     stop)
         echo "Stopping ${STACK_NAME} stack"
         docker-compose -p ${STACK_NAME} stop
@@ -18,6 +22,6 @@ case "$1" in
         docker-compose -p ${STACK_NAME} down
         ;;
     *)
-        echo "Accepted commands: start, stop, restart or clean"
+        echo "Accepted commands: start, start-base, stop, restart or clean"
         ;;
 esac
